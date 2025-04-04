@@ -9,7 +9,7 @@ import UIKit
 class DashboardViewController: UIViewController {
     
     // MARK: - Properties
-    private var viewModel: DashboardViewModel!
+    var viewModel = DashboardViewModel()
     
     // MARK: - UI Components
     private let incomeView: UIView = {
@@ -51,7 +51,7 @@ class DashboardViewController: UIViewController {
     }()
     private let incomeAmount = CustomLabel(text: "0", textColor: .white, font: UIFont.systemFont(ofSize: 16, weight: .regular)
     )
-    private let accountBalanceAmount = CustomLabel(text: "Rs 0", textColor: .black, font: UIFont.systemFont(ofSize: 30, weight: .regular)
+    private let accountBalanceAmount = CustomLabel(text: "Rs 0", textColor: .black, font: UIFont.systemFont(ofSize: 35, weight: .bold)
     )
     private let expenseAmount = CustomLabel(text: "0", textColor: .white, font: UIFont.systemFont(ofSize: 16, weight: .regular)
     )
@@ -65,14 +65,13 @@ class DashboardViewController: UIViewController {
     private let notificationImage = CustomImageView(imageName: "notifiactionIcon")
     private var collectionView: UICollectionView!
     private let options = ["Today", "Week", "Month", "Year"]
-    private var showExpenses = true
+    private var showExpenses = false
     private var selectedIndex = 0
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = UIColor(hex: "FFF6E5")
-        viewModel = DashboardViewModel()
         setupViews()
         setupCollectionView()
         setupExpenseTableView()
@@ -191,14 +190,16 @@ class DashboardViewController: UIViewController {
         ])
     }
     private func loadExpenses() {
-        viewModel.loadExpensesAndIncomes()
+        let selectedOption = options[selectedIndex]
+        viewModel.loadData(for: selectedOption)
         updateUI()
     }
     private func updateUI() {
         incomeAmount.text = "\(viewModel.totalIncome)"
         expenseAmount.text = "\(viewModel.totalExpenses)"
-        accountBalanceAmount.text = "Rs\(viewModel.accountBalance)"
+        accountBalanceAmount.text = "Rs.\(viewModel.accountBalance)"
         tableView.reloadData()
+        collectionView.reloadData()
     }
 }
 
@@ -215,6 +216,9 @@ extension DashboardViewController: UICollectionViewDelegate, UICollectionViewDat
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         selectedIndex = indexPath.item
+        let selectedOption = options[selectedIndex]
+        viewModel.loadData(for: selectedOption)
+        updateUI()
         collectionView.reloadData()
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -229,20 +233,23 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
         return 1
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return showExpenses ? viewModel.expenses.count : viewModel.incomes.count
+        return viewModel.expenses.count + viewModel.incomes.count
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if showExpenses {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardExpenseListTableView", for: indexPath) as! DashboardExpenseListTableView
-            let expense = viewModel.expenses[indexPath.row]
-            cell.configure(with: expense)
-            return cell
-        } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "DashboardIncomeListTableview", for: indexPath) as! DashboardIncomeListTableview
-            let income = viewModel.incomes[indexPath.row]
-            cell.configure(with: income)
-            return cell
-        }
-    }
+        
+        // Check whether the current index is for an expense or an income
+               if indexPath.row < viewModel.expenses.count {
+                   // Configure expense cell
+                   let expenseCell = tableView.dequeueReusableCell(withIdentifier: "DashboardExpenseListTableView", for: indexPath) as! DashboardExpenseListTableView
+                   let expense = viewModel.expenses[indexPath.row]
+                   expenseCell.configureExpense(with: expense)
+                   return expenseCell
+               } else {
+                   // Configure income cell
+                   let incomeCell = tableView.dequeueReusableCell(withIdentifier: "DashboardIncomeListTableview", for: indexPath) as! DashboardIncomeListTableview
+                   let income = viewModel.incomes[indexPath.row - viewModel.expenses.count]  // Adjust index to income's range
+                   incomeCell.configure(with: income)
+                   return incomeCell
+               }
+           }
 }

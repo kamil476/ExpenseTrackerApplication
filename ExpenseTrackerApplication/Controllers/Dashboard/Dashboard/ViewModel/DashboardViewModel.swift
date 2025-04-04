@@ -31,7 +31,6 @@ class DashboardViewModel {
             return result + income.incomeAmount
         }
     }
-    
     func calculateTotalExpenses() -> Double {
         return expenses.reduce(0) { result, expense in
             return result + expense.expenseAmount
@@ -39,13 +38,24 @@ class DashboardViewModel {
     }
     
     // MARK: - Fetch Expenses and Incomes
-    func loadExpensesAndIncomes() {
-        // Fetch today's expenses and incomes using CoreDataManager
-        if let fetchedExpenses = CoreDataManager.shared.fetchTodayExpense() {
-            expenses = fetchedExpenses
+    func loadData(for option: String) {
+        switch option {
+        case "Today":
+            expenses = CoreDataManager.shared.fetchTodayExpense() ?? []
+            incomes = CoreDataManager.shared.fetchTodayIncome() ?? []
+        case "Week":
+            expenses = CoreDataManager.shared.fetchWeeklyExpenses() ?? []
+            incomes = CoreDataManager.shared.fetchWeeklyIncome() ?? []
+        case "Month":
+            expenses = CoreDataManager.shared.fetchMonthlyExpenses() ?? []
+            incomes = CoreDataManager.shared.fetchMonthlyIncome() ?? []
+        case "Year":
+            expenses = CoreDataManager.shared.fetchYearlyExpenses() ?? []
+            incomes = CoreDataManager.shared.fetchYearlyIncome() ?? []
+        default:
+            expenses = []
+            incomes = []
         }
-        if let fetchedIncomes = CoreDataManager.shared.fetchTodayIncome() {
-            incomes = fetchedIncomes
-        }
+        print("Loaded \(expenses.count) expenses and \(incomes.count) incomes for \(option)")
     }
 }

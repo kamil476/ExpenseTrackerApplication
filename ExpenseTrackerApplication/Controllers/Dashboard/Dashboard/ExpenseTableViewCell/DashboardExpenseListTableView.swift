@@ -31,10 +31,17 @@ class DashboardExpenseListTableView: UITableViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
-    private let amountLabel: UILabel = {
+    private let expenseAmountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
         label.textColor = .red
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+    private let incomeAmountLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.boldSystemFont(ofSize: 16)
+        label.textColor = .systemGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -69,8 +76,9 @@ class DashboardExpenseListTableView: UITableViewCell {
         iconContainer.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
         contentView.addSubview(descriptionLabel)
-        contentView.addSubview(amountLabel)
+        contentView.addSubview(expenseAmountLabel)
         contentView.addSubview(timeLabel)
+        contentView.addSubview(incomeAmountLabel)
         
         NSLayoutConstraint.activate([
             iconContainer.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
@@ -85,14 +93,17 @@ class DashboardExpenseListTableView: UITableViewCell {
             
             titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
             titleLabel.leadingAnchor.constraint(equalTo: iconContainer.trailingAnchor, constant: 12),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: amountLabel.leadingAnchor, constant: -8),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: expenseAmountLabel.leadingAnchor, constant: -8),
             
             descriptionLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 4),
             descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
             descriptionLabel.trailingAnchor.constraint(lessThanOrEqualTo: timeLabel.leadingAnchor, constant: -8),
             
-            amountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            amountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            expenseAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            expenseAmountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
+            
+            incomeAmountLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+            incomeAmountLabel.topAnchor.constraint(equalTo: titleLabel.topAnchor),
             
             timeLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             timeLabel.topAnchor.constraint(equalTo: descriptionLabel.topAnchor)
@@ -100,11 +111,11 @@ class DashboardExpenseListTableView: UITableViewCell {
     }
     
     // MARK: - Configure with Expense
-    func configure(with expense: Expense) {
+    func configureExpense(with expense: Expense) {
         // You can set the iconImage based on the category or type of expense
         titleLabel.text = expense.expenseCategory
         descriptionLabel.text = expense.expenseDetails
-        amountLabel.text = "- Rs\(expense.expenseAmount)"
+        expenseAmountLabel.text = "- Rs\(expense.expenseAmount)"
         
         // Assuming `expenseTime` is a Date, format it as a string
         let dateFormatter = DateFormatter()

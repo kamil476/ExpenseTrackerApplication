@@ -29,7 +29,6 @@
 		E8DC7B5F2D7AC67A00C9FFEF /* ExpenseTrackerApplicationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B5E2D7AC67A00C9FFEF /* ExpenseTrackerApplicationTests.swift */; };
 		E8DC7B692D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B682D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITests.swift */; };
 		E8DC7B6B2D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B6A2D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITestsLaunchTests.swift */; };
-		E8DC7B782D7ACABA00C9FFEF /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B772D7ACABA00C9FFEF /* TabBarController.swift */; };
 		E8DC7B7D2D7EC1A000C9FFEF /* CustomLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B7C2D7EC1A000C9FFEF /* CustomLabel.swift */; };
 		E8DC7B832D800D4F00C9FFEF /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B822D800D4F00C9FFEF /* CustomImageView.swift */; };
 		E8DC7B862D82A55700C9FFEF /* AddIncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8DC7B852D82A55700C9FFEF /* AddIncomeViewController.swift */; };
@@ -82,7 +81,6 @@
 		E8DC7B642D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ExpenseTrackerApplicationUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8DC7B682D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApplicationUITests.swift; sourceTree = "<group>"; };
 		E8DC7B6A2D7AC67A00C9FFEF /* ExpenseTrackerApplicationUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApplicationUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		E8DC7B772D7ACABA00C9FFEF /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		E8DC7B7C2D7EC1A000C9FFEF /* CustomLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLabel.swift; sourceTree = "<group>"; };
 		E8DC7B822D800D4F00C9FFEF /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		E8DC7B852D82A55700C9FFEF /* AddIncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddIncomeViewController.swift; sourceTree = "<group>"; };
@@ -273,7 +271,6 @@
 				E8DC7B7A2D7EB0BC00C9FFEF /* Application */,
 				E8DC7B502D7AC67900C9FFEF /* Assets.xcassets */,
 				E8DC7B552D7AC67900C9FFEF /* Info.plist */,
-				E8DC7B772D7ACABA00C9FFEF /* TabBarController.swift */,
 			);
 			path = ExpenseTrackerApplication;
 			sourceTree = "<group>";
@@ -497,7 +494,6 @@
 				E82F83EB2D95247500C17354 /* DateExtension.swift in Sources */,
 				E82F83DE2D91252A00C17354 /* AddIncomeViewModel.swift in Sources */,
 				E8DC7B8C2D82B2FF00C9FFEF /* DashboardViewController.swift in Sources */,
-				E8DC7B782D7ACABA00C9FFEF /* TabBarController.swift in Sources */,
 				E82F83E02D91343D00C17354 /* AddIncomeModel.swift in Sources */,
 				E8DC7B8F2D82BCAD00C9FFEF /* CustomTabBarController.swift in Sources */,
 				E82F83E82D928C9400C17354 /* DashboardExpenseListTableView.swift in Sources */,

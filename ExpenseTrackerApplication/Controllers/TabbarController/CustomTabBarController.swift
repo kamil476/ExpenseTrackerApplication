@@ -69,7 +69,7 @@ class CustomTabBarController: UITabBarController {
         setupTabLabel(label: transactionLabel, text: "Income", x: 95, tag: 1)
         setupTabLabel(label: budgetLabel, text: "Budget", x: view.frame.width - 174, tag: 2)
         setupTabLabel(label: profileLabel, text: "Profile", x: view.frame.width - 100, tag: 3)
-    
+        
         updateTabSelection()
     }
     

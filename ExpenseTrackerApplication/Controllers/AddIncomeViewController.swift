@@ -3,15 +3,12 @@
 //  ExpenseTrackerApplication
 //
 //  Created by Kamil Kakar on 13/03/2025.
-//
 
 import UIKit
 
 class AddIncomeViewController: UIViewController {
     
     // MARK: - UI COMPONENTS
-    var onAmountEntered: ((IncomeItemList) -> Void)?
-    
     private let fieldsView: UIView = {
         let bottomview = UIView()
         bottomview.backgroundColor = .white
@@ -419,7 +416,6 @@ class AddIncomeViewController: UIViewController {
 
 // MARK: -  TABLEVIEW METHODS
 extension AddIncomeViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return tableView == categoryDropdown ? categoryOptions.count : walletOptions.count
     }

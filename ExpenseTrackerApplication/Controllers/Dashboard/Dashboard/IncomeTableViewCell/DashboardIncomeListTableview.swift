@@ -34,7 +34,7 @@ class DashboardIncomeListTableview: UITableViewCell {
     private let amountLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.boldSystemFont(ofSize: 16)
-        label.textColor = .green
+        label.textColor = .systemGreen
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -104,12 +104,11 @@ class DashboardIncomeListTableview: UITableViewCell {
         // You can set the iconImage based on the category or type of expense
         titleLabel.text = income.incomeCategory
         descriptionLabel.text = income.incomeDetails
-        amountLabel.text = "- Rs\(income.incomeAmount)"
+        amountLabel.text = "+ Rs\(income.incomeAmount)"
         
         // Assuming `expenseTime` is a Date, format it as a string
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .short
         timeLabel.text = dateFormatter.string(from: income.incomeDate!)
     }
-
 }

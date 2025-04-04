@@ -11,7 +11,6 @@ import AVFoundation
 class AddExpenseViewController: UIViewController {
     
     // MARK: - UI COMPONENTS
-    var onExpenseAdded: ((ExpenseItemList) -> Void)?
     private var fieldsView: UIView = {
         let bottomview = UIView()
         bottomview.backgroundColor = .white
@@ -179,7 +178,6 @@ class AddExpenseViewController: UIViewController {
     private let askAmount = CustomLabel(text: "How much?", textColor: .systemGray5, font: UIFont.systemFont(ofSize: 16, weight: .semibold))
     private let currencyLabel = CustomLabel(text: "Rs.", textColor: .white, font: UIFont.systemFont(ofSize: 35, weight: .semibold))
     var budgetType: BudgetType = .food
-    
     
     // MARK: - LIFECYCLE
     override func viewDidLoad() {
@@ -390,7 +388,6 @@ class AddExpenseViewController: UIViewController {
               let expenseDescription = descriptiontextField.text else {
             return
         }
-        
         // Save expense data using CoreDataManager
         CoreDataManager.shared.saveExpense(expenseAmount: expenseAmount,
                                            expenseCategory: expenseName,
