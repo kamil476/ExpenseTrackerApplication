@@ -32,7 +32,7 @@ class CustomTabBarController: UITabBarController {
         let homeVC = DashboardViewController()
         let transactionVC = AddIncomeViewController()
         let budgetVC = AddExpenseViewController()
-        let profileVC = ProfileController()
+        let profileVC = BudgetHistoryController()
         
         viewControllers = [homeVC, transactionVC, budgetVC, profileVC]
         selectedIndex = 0
@@ -49,7 +49,7 @@ class CustomTabBarController: UITabBarController {
         view.addSubview(customTabBarView)
         
         // Floating Button
-        floatingButton.frame = CGRect(x: (view.frame.width / 2) - 35, y: customTabBarView.frame.origin.y - 20, width: 60, height: 60)
+        floatingButton.frame = CGRect(x: (view.frame.width / 2) - 35, y: customTabBarView.frame.origin.y - 5, width: 60, height: 60)
         floatingButton.backgroundColor = UIColor(hex: "7F3DFF")
         floatingButton.setImage(UIImage(named: "addIcon"), for: .normal)
         floatingButton.tintColor = .white

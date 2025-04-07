@@ -8,9 +8,9 @@
 import Foundation
 
 extension Date {
-    func stripTime() -> Date {
-        let components = Calendar.current.dateComponents([.year, .month, .day], from: self)
-        let date = Calendar.current.date(from: components)
-        return date!
-    }
+    func formattedTime() -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "hh:mm a" // 12-hour format with AM/PM
+            return dateFormatter.string(from: self)
+        }
 }

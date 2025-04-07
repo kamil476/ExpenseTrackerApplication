@@ -186,7 +186,7 @@ class DashboardViewController: UIViewController {
             tableView.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 10),
             tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 50),
+            tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -92),
         ])
     }
     private func loadExpenses() {
@@ -197,7 +197,7 @@ class DashboardViewController: UIViewController {
     private func updateUI() {
         incomeAmount.text = "\(viewModel.totalIncome)"
         expenseAmount.text = "\(viewModel.totalExpenses)"
-        accountBalanceAmount.text = "Rs.\(viewModel.accountBalance)"
+        accountBalanceAmount.text = "Rs\(viewModel.accountBalance)"
         tableView.reloadData()
         collectionView.reloadData()
     }
@@ -238,18 +238,18 @@ extension DashboardViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Check whether the current index is for an expense or an income
-               if indexPath.row < viewModel.expenses.count {
-                   // Configure expense cell
-                   let expenseCell = tableView.dequeueReusableCell(withIdentifier: "DashboardExpenseListTableView", for: indexPath) as! DashboardExpenseListTableView
-                   let expense = viewModel.expenses[indexPath.row]
-                   expenseCell.configureExpense(with: expense)
-                   return expenseCell
-               } else {
-                   // Configure income cell
-                   let incomeCell = tableView.dequeueReusableCell(withIdentifier: "DashboardIncomeListTableview", for: indexPath) as! DashboardIncomeListTableview
-                   let income = viewModel.incomes[indexPath.row - viewModel.expenses.count]  // Adjust index to income's range
-                   incomeCell.configure(with: income)
-                   return incomeCell
-               }
-           }
+        if indexPath.row < viewModel.expenses.count {
+            // Configure expense cell
+            let expenseCell = tableView.dequeueReusableCell(withIdentifier: "DashboardExpenseListTableView", for: indexPath) as! DashboardExpenseListTableView
+            let expense = viewModel.expenses[indexPath.row]
+            expenseCell.configureExpense(with: expense)
+            return expenseCell
+        } else {
+            // Configure income cell
+            let incomeCell = tableView.dequeueReusableCell(withIdentifier: "DashboardIncomeListTableview", for: indexPath) as! DashboardIncomeListTableview
+            let income = viewModel.incomes[indexPath.row - viewModel.expenses.count]  // Adjust index to income's range
+            incomeCell.configure(with: income)
+            return incomeCell
+        }
+    }
 }

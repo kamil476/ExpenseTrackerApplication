@@ -106,9 +106,9 @@ class DashboardIncomeListTableview: UITableViewCell {
         descriptionLabel.text = income.incomeDetails
         amountLabel.text = "+ Rs\(income.incomeAmount)"
         
-        // Assuming `expenseTime` is a Date, format it as a string
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "hh:mm a" // 12-hour format with AM/PM
         timeLabel.text = dateFormatter.string(from: income.incomeDate!)
+        
     }
 }

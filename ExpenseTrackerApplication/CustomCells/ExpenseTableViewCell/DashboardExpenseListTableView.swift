@@ -71,7 +71,6 @@ class DashboardExpenseListTableView: UITableViewCell {
         contentView.layer.shadowOffset = CGSize(width: 0, height: 2)
         contentView.layer.shadowOpacity = 0.2
         contentView.layer.shadowRadius = 4
-        
         contentView.addSubview(iconContainer)
         iconContainer.addSubview(iconImageView)
         contentView.addSubview(titleLabel)
@@ -112,14 +111,13 @@ class DashboardExpenseListTableView: UITableViewCell {
     
     // MARK: - Configure with Expense
     func configureExpense(with expense: Expense) {
-        // You can set the iconImage based on the category or type of expense
+        // setting the iconImage based on the category or type of expense
         titleLabel.text = expense.expenseCategory
         descriptionLabel.text = expense.expenseDetails
         expenseAmountLabel.text = "- Rs\(expense.expenseAmount)"
         
-        // Assuming `expenseTime` is a Date, format it as a string
         let dateFormatter = DateFormatter()
-        dateFormatter.dateStyle = .short
+        dateFormatter.dateFormat = "hh:mm a"
         timeLabel.text = dateFormatter.string(from: expense.expenseDate!)
     }
 }

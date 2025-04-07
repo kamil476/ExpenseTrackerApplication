@@ -368,7 +368,7 @@ class AddExpenseViewController: UIViewController {
         NSLayoutConstraint.activate([
             bottomSheetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomSheetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomSheetView.heightAnchor.constraint(equalToConstant: 300),
+            bottomSheetView.heightAnchor.constraint(equalToConstant: 270),
             bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 300),
             
             stackView.centerXAnchor.constraint(equalTo: bottomSheetView.centerXAnchor),
@@ -377,7 +377,7 @@ class AddExpenseViewController: UIViewController {
         ])
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.3) {
-            self.bottomSheetView.transform = CGAffineTransform(translationX: 0, y: -300)
+            self.bottomSheetView.transform = CGAffineTransform(translationX: 0, y: -380)
         }
     }
     @objc private func continueButtonTapped() {

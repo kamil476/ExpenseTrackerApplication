@@ -77,7 +77,6 @@ class CoreDataManager {
         saveContext()
     }
     
-    // MARK: - Fetch Budget
     func fetchBudget() -> [Budget]? {
         let fetchRequest: NSFetchRequest<Budget> = Budget.fetchRequest()
         do {
@@ -88,7 +87,6 @@ class CoreDataManager {
         }
     }
     
-    // MARK: - Fetch Category
     func fetchBudget() -> [Category]? {
         let fetchRequest: NSFetchRequest<Category> = Category.fetchRequest()
         do {
@@ -99,7 +97,6 @@ class CoreDataManager {
         }
     }
     
-    // MARK: - Fetch Expense
     func fetchBudget() -> [Expense]? {
         let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
         do {
@@ -110,13 +107,34 @@ class CoreDataManager {
         }
     }
     
-    // MARK: - Fetch Income
     func fetchBudget() -> [Income]? {
         let fetchRequest: NSFetchRequest<Income> = Income.fetchRequest()
         do {
             return try context.fetch(fetchRequest)
         } catch {
             print("Failed to fetch drinks: \(error)")
+            return nil
+        }
+    }
+    
+    // MARK: - Fetch All Expenses
+    func fetchAllExpenses() -> [Expense]? {
+        let fetchRequest: NSFetchRequest<Expense> = Expense.fetchRequest()
+        do {
+            return try context.fetch(fetchRequest)
+        } catch {
+            print("Failed to fetch all expenses: \(error)")
+            return nil
+        }
+    }
+
+    // MARK: - Fetch All Incomes
+    func fetchAllIncomes() -> [Income]? {
+        let fetchRequest: NSFetchRequest<Income> = Income.fetchRequest()
+        do {
+            return try context.fetch(fetchRequest)
+        } catch {
+            print("Failed to fetch all incomes: \(error)")
             return nil
         }
     }

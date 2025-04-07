@@ -338,7 +338,7 @@ class AddIncomeViewController: UIViewController {
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(hex: "7F3DFF")
         button.layer.cornerRadius = 8
-        button.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 50).isActive = true
         button.addTarget(self, action: action, for: .touchUpInside)
         return button
     }
@@ -359,7 +359,7 @@ class AddIncomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             bottomSheetView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             bottomSheetView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            bottomSheetView.heightAnchor.constraint(equalToConstant: 300),
+            bottomSheetView.heightAnchor.constraint(equalToConstant: 270),
             bottomSheetView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 300),
             
             stackView.centerXAnchor.constraint(equalTo: bottomSheetView.centerXAnchor),
@@ -368,7 +368,7 @@ class AddIncomeViewController: UIViewController {
         ])
         view.layoutIfNeeded()
         UIView.animate(withDuration: 0.3) {
-            self.bottomSheetView.transform = CGAffineTransform(translationX: 0, y: -300)
+            self.bottomSheetView.transform = CGAffineTransform(translationX: 0, y: -380)
         }
     }
     @objc private func showCategoryDropdown() {
